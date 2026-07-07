@@ -9,10 +9,10 @@ from functools import reduce
 
 from .environment import Env
 from .errors import SchemeError, SchemeTypeError
-from .evaluator import apply_procedure, is_true
-from .types import (Char, Continuation, Pair, Procedure, Symbol, gensym,
-                    intern, is_scheme_list, nil, normalize_number, pylist,
-                    scm_repr, slist)
+from .evaluator import apply_procedure, is_true, seval
+from .types import (Char, Continuation, Pair, Procedure, Promise, Symbol,
+                    gensym, intern, is_scheme_list, nil, normalize_number,
+                    pylist, scm_repr, slist)
 
 
 def _check_number(x, who):
@@ -262,6 +262,28 @@ def _call_cc(proc):
         raise
 
 
+# ------------------------------------------------------------- promises
+
+def _force(p):
+    if not isinstance(p, Promise):
+        return p
+    if not p.forced:
+        p.value = seval(p.expr, p.env)
+        p.forced = True
+        p.expr = None
+        p.env = None
+    return p.value
+
+
+def _make_promise(v):
+    if isinstance(v, Promise):
+        return v
+    p = Promise(None, None)
+    p.forced = True
+    p.value = v
+    return p
+
+
 # ------------------------------------------------------------- output
 
 def _display(x, *rest):
@@ -496,6 +518,9 @@ def make_global_env():
     # control
     define("call/cc", _call_cc)
     define("call-with-current-continuation", _call_cc)
+    define("force", _force)
+    define("make-promise", _make_promise)
+    define("promise?", lambda x: isinstance(x, Promise))
 
     # I/O and misc
     define("display", _display)

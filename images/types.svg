@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" width="900" height="460" font-family="Consolas, 'Courier New', monospace">
+  <defs>
+    <marker id="arrow2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#444"/>
+    </marker>
+  </defs>
+
+  <!-- Interpreter -->
+  <rect x="360" y="10" width="200" height="80" rx="6" fill="#fde9ec" stroke="#b23a55" stroke-width="2"/>
+  <text x="460" y="30" text-anchor="middle" font-size="14" font-weight="bold" fill="#6b1729">Interpreter</text>
+  <line x1="360" y1="38" x2="560" y2="38" stroke="#b23a55"/>
+  <text x="372" y="55" font-size="11" fill="#6b1729">env: Env</text>
+  <text x="372" y="70" font-size="11" fill="#6b1729">eval(), define(), call()</text>
+
+  <!-- Env -->
+  <rect x="360" y="150" width="200" height="80" rx="6" fill="#f3e9fb" stroke="#7a4fa3" stroke-width="2"/>
+  <text x="460" y="170" text-anchor="middle" font-size="14" font-weight="bold" fill="#3f2360">Env</text>
+  <line x1="360" y1="178" x2="560" y2="178" stroke="#7a4fa3"/>
+  <text x="372" y="195" font-size="11" fill="#3f2360">vars: dict</text>
+  <text x="372" y="210" font-size="11" fill="#3f2360">outer: Env | None</text>
+
+  <!-- self loop on Env (outer chain) -->
+  <path d="M 560 200 C 640 200, 640 240, 560 220" fill="none" stroke="#7a4fa3" stroke-width="2" marker-end="url(#arrow2)"/>
+  <text x="605" y="200" font-size="10" fill="#7a4fa3">outer</text>
+
+  <!-- Procedure -->
+  <rect x="80" y="150" width="200" height="95" rx="6" fill="#e6f6e9" stroke="#2f8f4e" stroke-width="2"/>
+  <text x="180" y="170" text-anchor="middle" font-size="14" font-weight="bold" fill="#154a26">Procedure</text>
+  <line x1="80" y1="178" x2="280" y2="178" stroke="#2f8f4e"/>
+  <text x="92" y="195" font-size="11" fill="#154a26">params, rest</text>
+  <text x="92" y="210" font-size="11" fill="#154a26">body: [Pair]</text>
+  <text x="92" y="225" font-size="11" fill="#154a26">env: Env (closure)</text>
+  <text x="92" y="240" font-size="11" fill="#154a26">name</text>
+
+  <!-- Pair -->
+  <rect x="80" y="330" width="200" height="70" rx="6" fill="#e3f1fb" stroke="#2e6da4" stroke-width="2"/>
+  <text x="180" y="350" text-anchor="middle" font-size="14" font-weight="bold" fill="#1b3f5c">Pair</text>
+  <line x1="80" y1="358" x2="280" y2="358" stroke="#2e6da4"/>
+  <text x="92" y="375" font-size="11" fill="#1b3f5c">car, cdr</text>
+  <text x="92" y="390" font-size="11" fill="#1b3f5c">(cons cell)</text>
+
+  <!-- Symbol -->
+  <rect x="360" y="330" width="200" height="70" rx="6" fill="#fdf3e2" stroke="#c98a2c" stroke-width="2"/>
+  <text x="460" y="350" text-anchor="middle" font-size="14" font-weight="bold" fill="#5a3c00">Symbol</text>
+  <line x1="360" y1="358" x2="560" y2="358" stroke="#c98a2c"/>
+  <text x="372" y="375" font-size="11" fill="#5a3c00">name: str (interned)</text>
+  <text x="372" y="390" font-size="11" fill="#5a3c00">used as Env.vars key</text>
+
+  <!-- edges -->
+  <line x1="460" y1="90" x2="460" y2="145" stroke="#444" stroke-width="2" marker-end="url(#arrow2)"/>
+  <text x="468" y="120" font-size="10" fill="#444">root scope</text>
+
+  <line x1="360" y1="190" x2="280" y2="190" stroke="#444" stroke-width="2" marker-end="url(#arrow2)"/>
+  <text x="290" y="185" font-size="10" fill="#444">closure env</text>
+
+  <line x1="180" y1="245" x2="180" y2="325" stroke="#444" stroke-width="2" marker-end="url(#arrow2)"/>
+  <text x="188" y="290" font-size="10" fill="#444">body forms</text>
+
+  <line x1="360" y1="365" x2="280" y2="365" stroke="#444" stroke-width="2" marker-end="url(#arrow2)"/>
+  <text x="290" y="360" font-size="10" fill="#444">bound in</text>
+</svg>

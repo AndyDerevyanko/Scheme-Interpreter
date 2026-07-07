@@ -227,6 +227,21 @@ class Macro:
         return "#<macro>"
 
 
+class Promise:
+    """A memoized delayed computation created by `delay`."""
+
+    __slots__ = ("forced", "value", "expr", "env")
+
+    def __init__(self, expr, env):
+        self.forced = False
+        self.value = None
+        self.expr = expr
+        self.env = env
+
+    def __repr__(self):
+        return "#<promise>"
+
+
 class Continuation(Exception):
     """Escape continuation payload used by call/cc."""
 

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 360" width="980" height="360" font-family="Consolas, 'Courier New', monospace">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="980" height="360" fill="none"/>
+
+  <!-- main pipeline row -->
+  <g>
+    <rect x="10"  y="60" width="140" height="60" rx="8" fill="#fdf3e2" stroke="#c98a2c" stroke-width="2"/>
+    <text x="80" y="96" text-anchor="middle" font-size="15" fill="#5a3c00">source.scm</text>
+
+    <rect x="210" y="60" width="140" height="60" rx="8" fill="#e3f1fb" stroke="#2e6da4" stroke-width="2"/>
+    <text x="280" y="90" text-anchor="middle" font-size="15" fill="#1b3f5c">reader.py</text>
+    <text x="280" y="107" text-anchor="middle" font-size="11" fill="#1b3f5c">text -&gt; S-expr</text>
+
+    <rect x="410" y="60" width="160" height="60" rx="8" fill="#fdf3e2" stroke="#c98a2c" stroke-width="2"/>
+    <text x="490" y="96" text-anchor="middle" font-size="15" fill="#5a3c00">S-expressions</text>
+
+    <rect x="630" y="60" width="160" height="60" rx="8" fill="#e6f6e9" stroke="#2f8f4e" stroke-width="2"/>
+    <text x="710" y="90" text-anchor="middle" font-size="15" fill="#154a26">evaluator.py</text>
+    <text x="710" y="107" text-anchor="middle" font-size="11" fill="#154a26">trampolined seval()</text>
+
+    <rect x="850" y="60" width="120" height="60" rx="8" fill="#fdf3e2" stroke="#c98a2c" stroke-width="2"/>
+    <text x="910" y="90" text-anchor="middle" font-size="15" fill="#5a3c00">result</text>
+    <text x="910" y="107" text-anchor="middle" font-size="11" fill="#5a3c00">Scheme value</text>
+
+    <line x1="150" y1="90" x2="205" y2="90" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="350" y1="90" x2="405" y2="90" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="570" y1="90" x2="625" y2="90" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="790" y1="90" x2="845" y2="90" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- support boxes feeding the evaluator -->
+  <g>
+    <rect x="600" y="200" width="110" height="55" rx="8" fill="#f3e9fb" stroke="#7a4fa3" stroke-width="2"/>
+    <text x="655" y="223" text-anchor="middle" font-size="14" fill="#3f2360">environment.py</text>
+    <text x="655" y="240" text-anchor="middle" font-size="11" fill="#3f2360">lexical scopes</text>
+
+    <rect x="740" y="200" width="110" height="55" rx="8" fill="#f3e9fb" stroke="#7a4fa3" stroke-width="2"/>
+    <text x="795" y="223" text-anchor="middle" font-size="14" fill="#3f2360">builtins.py</text>
+    <text x="795" y="240" text-anchor="middle" font-size="11" fill="#3f2360">~150 primitives</text>
+
+    <line x1="655" y1="200" x2="690" y2="120" stroke="#7a4fa3" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="795" y1="200" x2="730" y2="120" stroke="#7a4fa3" stroke-width="2" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- host embedding -->
+  <g>
+    <rect x="400" y="280" width="220" height="60" rx="8" fill="#fde9ec" stroke="#b23a55" stroke-width="2"/>
+    <text x="510" y="308" text-anchor="middle" font-size="15" fill="#6b1729">interpreter.py</text>
+    <text x="510" y="325" text-anchor="middle" font-size="11" fill="#6b1729">embeddable facade (host API)</text>
+    <line x1="510" y1="280" x2="510" y2="122" stroke="#b23a55" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="530" y1="122" x2="530" y2="280" stroke="#b23a55" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
+  </g>
+</svg>
