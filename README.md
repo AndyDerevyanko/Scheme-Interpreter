@@ -1,6 +1,6 @@
 # Scheme-Interpreter
 
-A small, embeddable Scheme interpreter in pure Python (no dependencies)
+A small, embeddable Scheme interpreter in pure Python (no dependencies).
 
 ## Quick start
 
