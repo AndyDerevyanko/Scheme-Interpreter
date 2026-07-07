@@ -1,8 +1,6 @@
 # Scheme-Interpreter
 
-A small, embeddable Scheme interpreter in pure Python (no dependencies),
-built as the scripting core for a LilyPond-style music notation program —
-and usable standalone.
+A small, embeddable Scheme interpreter in pure Python (no dependencies)
 
 ## Quick start
 
@@ -68,11 +66,6 @@ python tests/test_basics.py    # hand-written core semantics (99 cases)
 python tests/run_norvig.py     # Peter Norvig's lispy suite (81 cases, all pass)
 python tests/run_r7rs.py       # chibi-scheme R7RS suite — compatibility metric
 ```
-
-The R7RS suite ([tests/vendor/r7rs-tests.scm](tests/vendor/r7rs-tests.scm))
-exercises all of R7RS-small; it is a progress metric, not a gate — the
-score should only go up as roadmap items land.
-
 ## Layout
 
 | Module | Role |
